@@ -14,9 +14,9 @@ fixed_prompt = """
 # استخدم جُملاً قصيرة وتجنب التفاصيل غير الضرورية أو الكلمات الزائدة.
 """
 
-topic = "talk about updates in ai field in 2025 in english"
+topic = input()
 
-final_prompt = fixed_prompt + "\n\nالموضوع: " + topic
+final_prompt = fixed_prompt + "\n\nالموضوع: " + topic +
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 response = model.generate_content(final_prompt)
