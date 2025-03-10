@@ -14,9 +14,9 @@ fixed_prompt = """
 # استخدم جُملاً قصيرة وتجنب التفاصيل غير الضرورية أو الكلمات الزائدة.
 """
 
-topic = input()
-
-final_prompt = fixed_prompt + "\n\nالموضوع: " + topic +
+topic = input('Enter your script :')
+lang = input('choose your language :')
+final_prompt = fixed_prompt + "\n\nالموضوع: " + topic + 'in' + lang
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 response = model.generate_content(final_prompt)
