@@ -147,6 +147,8 @@ def detect_logo_in_video(video_path: str) -> bool:
     """
     Detect logos or watermarks using YOLOv5su.
     """
+    model_path = "yolov5su.pt"
+    yolo_model = YOLO("yolov5su.pt")
     cap = cv2.VideoCapture(video_path)
     while cap.isOpened():
         ret, frame = cap.read()
