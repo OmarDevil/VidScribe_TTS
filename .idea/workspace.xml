@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : merged all files in one file &lt;main.py&gt;&#10;util : added type-hinting method">
-      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Output of Scrpit in file &lt;Scripts&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sciprttool.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sciprttool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key words.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/key words.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.KeyWords.executor": "Run",
+    "Python.key words.executor": "Run",
     "Python.sciprttool.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -61,7 +60,7 @@
       <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\axl" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.sciprttool">
+  <component name="RunManager" selected="Python.key words">
     <configuration name="KeyWords" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
@@ -76,6 +75,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/KeyWords.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="key words" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VidScribe0.1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/key words.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -108,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.key words" />
         <item itemvalue="Python.sciprttool" />
         <item itemvalue="Python.KeyWords" />
       </list>
@@ -201,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741653347404</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="util : Output of Scrpit in file &lt;Scripts&gt;">
+      <option name="closed" value="true" />
+      <created>1741828353844</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1741828353844</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -212,6 +242,7 @@
     <MESSAGE value="feat : code to download videos" />
     <MESSAGE value="util : added requirements.txt file" />
     <MESSAGE value="util : merged all files in one file &lt;main.py&gt;&#10;util : added type-hinting method" />
-    <option name="LAST_COMMIT_MESSAGE" value="util : merged all files in one file &lt;main.py&gt;&#10;util : added type-hinting method" />
+    <MESSAGE value="util : Output of Scrpit in file &lt;Scripts&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="util : Output of Scrpit in file &lt;Scripts&gt;" />
   </component>
 </project>
