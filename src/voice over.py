@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 CHUNK_SIZE = 1024
-API_KEY = "sk_9cb8fc1fa8d204870d890050a10f6f5e3fc144e1a6b783fd"
+API_KEY = "sk_bee9b90f2ce467916125923629218a40f6779b2ae28e46dc"
 
 url = "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM"
 headers = {
