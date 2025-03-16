@@ -1,6 +1,7 @@
 import google.generativeai as genai
 from docx import Document
 from datetime import datetime
+import os
 
 API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
 
@@ -15,8 +16,8 @@ fixed_prompt = """
 """
 
 topic = input('Enter your script :')
-lang = input('choose your language :')
-final_prompt = fixed_prompt + "\n\nالموضوع: " + topic + 'in' + lang
+lang = input('Choose your language :')
+final_prompt = fixed_prompt + "\n\nالموضوع: " + topic + ' in ' + lang
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 response = model.generate_content(final_prompt)
@@ -28,12 +29,19 @@ for title in unwanted_titles:
     if text.startswith(title):
         text = text[len(title):].strip()
 
+# إنشاء فولدر scripts لو مش موجود
+folder_name = "scripts"
+os.makedirs(folder_name, exist_ok=True)
+
+# توليد اسم الملف باستخدام الوقت والتاريخ
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+file_name = f"scripts_{timestamp}.docx"
+file_path = os.path.join(folder_name, file_name)
+
+# حفظ الملف داخل الفولدر
 doc = Document()
 doc.add_paragraph(text)
+doc.save(file_path)
 
-filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.docx")
-
-doc.save(filename)
-
-print(f"✅ Voice Over Script saved as {filename}")
+print(f"✅ Script saved as {file_path}")
 
