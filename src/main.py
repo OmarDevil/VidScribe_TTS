@@ -195,25 +195,32 @@ def convert_text_to_speech(text: str, output_file: str) -> None:
 
 def main():
     # Step 1: Generate Voice Over Script
+    print("🚀 Step 1: Generating Voice Over Script...")
     topic = input("Enter your script topic: ")
     lang = input("Choose your language: ")
-    script_text = generate_voice_over_script(topic, lang)
+    with tqdm(total=1, desc="Generating Script") as pbar:
+        script_text = generate_voice_over_script(topic, lang)
+        pbar.update(1)
     script_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.docx")
     save_script_to_docx(script_text, script_filename)
 
     # Step 2: Extract Key Sentences
-    key_sentences = extract_key_sentences(script_text)
+    print("🚀 Step 2: Extracting Key Sentences...")
+    with tqdm(total=1, desc="Extracting Key Sentences") as pbar:
+        key_sentences = extract_key_sentences(script_text)
+        pbar.update(1)
     keywords_filename = save_keywords(key_sentences)
 
     # Step 3: Search and Download Videos
+    print("🚀 Step 3: Searching and Downloading Videos...")
     keywords = open(keywords_filename, "r", encoding="utf-8").read().splitlines()
-    for keyword in keywords:
+    for keyword in tqdm(keywords, desc="Processing Keywords"):
         print(f"🔍 Searching for: {keyword}")
         videos = search_videos(keyword)
         if not videos:
             print("No short videos found.")
             continue
-        for video in videos:
+        for video in tqdm(videos, desc="Downloading Videos"):
             print(f"⬇ Downloading: {video['title']} ({video['duration']})")
             video_path = download_video(video)
             if detect_text_in_video(video_path) or detect_logo_in_video(video_path):
@@ -223,8 +230,11 @@ def main():
                 print("✅ Video is clean.")
 
     # Step 4: Convert Script to Speech
-    audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
-    convert_text_to_speech(script_text, audio_filename)
+    print("🚀 Step 4: Converting Script to Speech...")
+    with tqdm(total=1, desc="Converting to Speech") as pbar:
+        audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
+        convert_text_to_speech(script_text, audio_filename)
+        pbar.update(1)
 
 
 if __name__ == "__main__":
