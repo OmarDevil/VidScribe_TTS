@@ -1,3 +1,4 @@
+import time
 from typing import List, Optional, Dict, Any
 from docx import Document
 from datetime import datetime
@@ -14,11 +15,9 @@ from ultralytics import YOLO
 from deep_translator import GoogleTranslator
 import google.generativeai as genai
 from gtts import gTTS
-import time
 from tqdm import tqdm
 
 # Constants
-FFMPEG_PATH = r"C:\ffmpeg-2025-03-06-git-696ea1c223-essentials_build\ffmpeg-2025-03-06-git-696ea1c223-essentials_build\bin\ffmpeg.exe"
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
 ELEVENLABS_API_KEY = "sk_9cb8fc1fa8d204870d890050a10f6f5e3fc144e1a6b783fd"
 ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
@@ -85,13 +84,19 @@ def save_keywords(key_sentences: List[str]) -> str:
     return filename
 
 
-def search_videos(query: str) -> List[Dict[str, Any]]:
+def search_videos(query: str, max_retries: int = 3) -> List[Dict[str, Any]]:
     """
-    Search YouTube for videos matching the query.
+    Search YouTube for videos matching the query with retry mechanism.
     """
-    results = YoutubeSearch(query, max_results=10).to_json()
-    videos = json.loads(results).get("videos", [])
-    return [video for video in videos if get_video_duration(video['duration']) <= 60]
+    for attempt in range(max_retries):
+        try:
+            results = YoutubeSearch(query, max_results=10).to_json()
+            videos = json.loads(results).get("videos", [])
+            return [video for video in videos if get_video_duration(video['duration']) <= 60]
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            time.sleep(2)  # Wait before retrying
+    return []  # Return empty list if all attempts fail
 
 
 def get_video_duration(duration_str: str) -> int:
@@ -110,14 +115,13 @@ def get_video_duration(duration_str: str) -> int:
 
 def download_video(video: Dict[str, Any], output_dir: str = "downloaded_videos") -> str:
     """
-    Download the given video using yt-dlp.
+    Download the given video using yt-dlp without merging formats.
     """
     os.makedirs(output_dir, exist_ok=True)
     video_url = f"https://www.youtube.com{video['url_suffix']}"
     ydl_opts = {
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
-        'format': 'bestvideo+bestaudio/best',
-        'ffmpeg_location': FFMPEG_PATH,
+        'format': 'bestvideo[ext=mp4]',  # تحميل أفضل تنسيق فيديو فقط (بدون صوت)
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([video_url])
