@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : changed keyword function to save just keywords instead of sentences">
-      <change afterPath="$PROJECT_DIR$/src/downloaded_videos/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/key_words/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/voice_over/.gitignore" afterDir="false" />
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="bug : error fixed and the code is clean now until makeing new bugs xD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloaded_videos/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_words/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old code/KeyWords.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old code/downloadtool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old code/key words one word.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old code/sciprttool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old code/voice over.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/voice_over/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742169987296</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="bug : error fixed and the code is clean now until makeing new bugs xD">
+      <option name="closed" value="true" />
+      <created>1742178419730</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742178419730</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -278,6 +281,7 @@
     <MESSAGE value="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes" />
     <MESSAGE value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
     <MESSAGE value="feat : changed keyword function to save just keywords instead of sentences" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : changed keyword function to save just keywords instead of sentences" />
+    <MESSAGE value="bug : error fixed and the code is clean now until makeing new bugs xD" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug : error fixed and the code is clean now until makeing new bugs xD" />
   </component>
 </project>

@@ -25,6 +25,19 @@ ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
 # Configure Gemini API
 genai.configure(api_key=GENAI_API_KEY)
 
+# Define paths
+VIDEO_FOLDER = os.path.join("..", "video")  # Path to the video folder
+DOWNLOADED_VIDEOS_FOLDER = os.path.join(VIDEO_FOLDER, "downloaded_videos")
+KEYWORDS_FOLDER = os.path.join(VIDEO_FOLDER, "key_words")
+SCRIPTS_FOLDER = os.path.join(VIDEO_FOLDER, "scripts")
+VOICE_OVER_FOLDER = os.path.join(VIDEO_FOLDER, "voice_over")
+
+# Create folders if they don't exist
+os.makedirs(DOWNLOADED_VIDEOS_FOLDER, exist_ok=True)
+os.makedirs(KEYWORDS_FOLDER, exist_ok=True)
+os.makedirs(SCRIPTS_FOLDER, exist_ok=True)
+os.makedirs(VOICE_OVER_FOLDER, exist_ok=True)
+
 
 def generate_voice_over_script(topic: str, lang: str = "en") -> str:
     """
@@ -53,12 +66,13 @@ def generate_voice_over_script(topic: str, lang: str = "en") -> str:
 
 def save_script_to_docx(text: str, filename: str) -> None:
     """
-    Save the generated script to a Word document.
+    Save the generated script to a Word document in the scripts folder.
     """
     doc = Document()
     doc.add_paragraph(text)
-    doc.save(filename)
-    print(f"✅ Voice Over Script saved as {filename}")
+    file_path = os.path.join(SCRIPTS_FOLDER, filename)
+    doc.save(file_path)
+    print(f"✅ Voice Over Script saved as {file_path}")
 
 
 def extract_keywords(text: str) -> List[str]:
@@ -66,7 +80,8 @@ def extract_keywords(text: str) -> List[str]:
     Extract keywords from the script using Gemini API.
     """
     model = genai.GenerativeModel("gemini-1.5-flash")
-    prompt = f"Extract the most important keywords from the following script and return them as a comma-separated list in English:\n\n{text}"
+    prompt = (f"Extract the most important keywords from the following script and return them as a comma-separated "
+              f"list in English:\n\n{text}")
     response = model.generate_content(prompt)
     if response.text:
         # Split the comma-separated keywords into a list
@@ -79,15 +94,16 @@ def extract_keywords(text: str) -> List[str]:
 
 def save_keywords(keywords: List[str]) -> str:
     """
-    Save the extracted keywords to a text file.
+    Save the extracted keywords to a text file in the key_words folder.
     """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"key_words_{timestamp}.txt"
-    with open(filename, "w", encoding="utf-8") as f:
+    file_path = os.path.join(KEYWORDS_FOLDER, filename)
+    with open(file_path, "w", encoding="utf-8") as f:
         for keyword in keywords:
             f.write(keyword + "\n")
-    print(f"✅ Keywords saved in {filename}")
-    return filename
+    print(f"✅ Keywords saved in {file_path}")
+    return file_path
 
 
 def search_videos(query: str, max_retries: int = 3) -> List[Dict[str, Any]]:
@@ -105,7 +121,7 @@ def search_videos(query: str, max_retries: int = 3) -> List[Dict[str, Any]]:
     return []  # Return empty list if all attempts fail
 
 
-def get_video_duration(duration_str: str) -> int:
+def get_video_duration(duration_str: str) -> float:
     """
     Convert YouTube duration (MM:SS or HH:MM:SS) to seconds.
     """
@@ -119,7 +135,7 @@ def get_video_duration(duration_str: str) -> int:
     return float('inf')
 
 
-def download_video(video: Dict[str, Any], output_dir: str = "downloaded_videos") -> str:
+def download_video(video: Dict[str, Any], output_dir: str = DOWNLOADED_VIDEOS_FOLDER) -> str:
     """
     Download the given video using yt-dlp without merging formats.
     """
@@ -178,7 +194,7 @@ def detect_logo_in_video(video_path: str) -> bool:
 
 def convert_text_to_speech(text: str, output_file: str) -> None:
     """
-    Convert text to speech using ElevenLabs API.
+    Convert text to speech using ElevenLabs API and save it in the voice_over folder.
     """
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{ELEVENLABS_VOICE_ID}"
     headers = {
@@ -196,11 +212,12 @@ def convert_text_to_speech(text: str, output_file: str) -> None:
     }
     response = requests.post(url, json=data, headers=headers)
     response.raise_for_status()
-    with open(output_file, 'wb') as f:
+    file_path = os.path.join(VOICE_OVER_FOLDER, output_file)
+    with open(file_path, 'wb') as f:
         for chunk in response.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
-    print(f"✅ Audio saved as {output_file}")
+    print(f"✅ Audio saved as {file_path}")
 
 
 def main():
@@ -214,7 +231,7 @@ def main():
     progress_bar = tqdm(
         total=steps,
         desc="🔄 Progress",
-        colour="cyan",
+        colour="green",
         bar_format="{desc}: {percentage:3.0f}% |{bar}| {n_fmt}/{total_fmt} Steps"
     )
 
@@ -259,6 +276,7 @@ def main():
     # Close progress bar
     progress_bar.close()
     print("\n✅ Process completed successfully!\n")
+
 
 if __name__ == "__main__":
     main()
