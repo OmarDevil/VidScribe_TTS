@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes">
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloaded_videos/Ronaldo Revenge  #cr7 #shorts.mp4" beforePathEscaped="$PROJECT_DIR$/src/downloaded_videos/Ronaldo Revenge 😱😱 ##cr7 ##shorts.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_221950.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_223342.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_224336.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_215219.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_220119.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/Key Words/key_words_20250316_221316.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/Key Words/key_words_20250316_221728.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/scripts/voice_over_20250316_221315.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/scripts/voice_over_20250316_221727.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_221949.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_223341.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_224335.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742155546666</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not">
+      <option name="closed" value="true" />
+      <created>1742157923562</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1742157923562</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -246,6 +263,7 @@
     <MESSAGE value="util : merged all files in one file &lt;main.py&gt;&#10;util : added type-hinting method" />
     <MESSAGE value="util : fixed some issues in code" />
     <MESSAGE value="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes" />
+    <MESSAGE value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
   </component>
 </project>

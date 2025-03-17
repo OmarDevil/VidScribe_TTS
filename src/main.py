@@ -61,26 +61,32 @@ def save_script_to_docx(text: str, filename: str) -> None:
     print(f"✅ Voice Over Script saved as {filename}")
 
 
-def extract_key_sentences(text: str) -> List[str]:
+def extract_keywords(text: str) -> List[str]:
     """
-    Extract key sentences from the script using Gemini API.
+    Extract keywords from the script using Gemini API.
     """
     model = genai.GenerativeModel("gemini-1.5-flash")
-    prompt = f"Extract key sentences from the following script and return them in English:\n\n{text}"
+    prompt = f"Extract the most important keywords from the following script and return them as a comma-separated list in English:\n\n{text}"
     response = model.generate_content(prompt)
-    return response.text.split("\n") if response.text else []
+    if response.text:
+        # Split the comma-separated keywords into a list
+        keywords = response.text.strip().split(",")
+        # Remove any leading/trailing whitespace from each keyword
+        keywords = [keyword.strip() for keyword in keywords]
+        return keywords
+    return []
 
 
-def save_keywords(key_sentences: List[str]) -> str:
+def save_keywords(keywords: List[str]) -> str:
     """
-    Save the extracted key sentences to a text file.
+    Save the extracted keywords to a text file.
     """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"key_words_{timestamp}.txt"
     with open(filename, "w", encoding="utf-8") as f:
-        for sentence in key_sentences:
-            f.write(sentence + "\n")
-    print(f"✅ Key sentences saved in {filename}")
+        for keyword in keywords:
+            f.write(keyword + "\n")
+    print(f"✅ Keywords saved in {filename}")
     return filename
 
 
@@ -208,12 +214,12 @@ def main():
     script_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.docx")
     save_script_to_docx(script_text, script_filename)
 
-    # Step 2: Extract Key Sentences
-    print("🚀 Step 2: Extracting Key Sentences...")
-    with tqdm(total=1, desc="Extracting Key Sentences") as pbar:
-        key_sentences = extract_key_sentences(script_text)
+    # Step 2: Extract Keywords
+    print("🚀 Step 2: Extracting Keywords...")
+    with tqdm(total=1, desc="Extracting Keywords") as pbar:
+        keywords = extract_keywords(script_text)
         pbar.update(1)
-    keywords_filename = save_keywords(key_sentences)
+    keywords_filename = save_keywords(keywords)
 
     # Step 3: Search and Download Videos
     print("🚀 Step 3: Searching and Downloading Videos...")
