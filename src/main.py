@@ -127,7 +127,7 @@ def download_video(video: Dict[str, Any], output_dir: str = "downloaded_videos")
     video_url = f"https://www.youtube.com{video['url_suffix']}"
     ydl_opts = {
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
-        'format': 'bestvideo[ext=mp4]',  # تحميل أفضل تنسيق فيديو فقط (بدون صوت)
+        'format': 'bestvideo[ext=mp4]',
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([video_url])
@@ -204,33 +204,43 @@ def convert_text_to_speech(text: str, output_file: str) -> None:
 
 
 def main():
+    steps = 4  # Total number of main steps
+    print("\n🚀 Starting the process...\n")
+
+    # Step 1: Get User Input Before Starting the Progress Bar
+    topic = input("\n📌 Enter your script topic: ")
+
+    # Configure the progress bar with custom styling
+    progress_bar = tqdm(
+        total=steps,
+        desc="🔄 Progress",
+        colour="cyan",
+        bar_format="{desc}: {percentage:3.0f}% |{bar}| {n_fmt}/{total_fmt} Steps"
+    )
+
     # Step 1: Generate Voice Over Script
-    print("🚀 Step 1: Generating Voice Over Script...")
-    topic = input("Enter your script topic: ")
-    lang = input("Choose your language: ")
-    with tqdm(total=1, desc="Generating Script") as pbar:
-        script_text = generate_voice_over_script(topic, lang)
-        pbar.update(1)
+    print("\n✍️ Generating Voice Over Script...")
+    script_text = generate_voice_over_script(topic)
     script_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.docx")
     save_script_to_docx(script_text, script_filename)
+    progress_bar.update(1)
 
-    # Step 2: Extract Keywords
-    print("🚀 Step 2: Extracting Keywords...")
-    with tqdm(total=1, desc="Extracting Keywords") as pbar:
-        keywords = extract_keywords(script_text)
-        pbar.update(1)
-    keywords_filename = save_keywords(keywords)
+    # Step 2: Extract Key Sentences
+    print("\n📑 Extracting Key Sentences...")
+    key_sentences = extract_keywords(script_text)
+    keywords_filename = save_keywords(key_sentences)
+    progress_bar.update(1)
 
     # Step 3: Search and Download Videos
-    print("🚀 Step 3: Searching and Downloading Videos...")
+    print("\n🎥 Searching and Downloading Videos...")
     keywords = open(keywords_filename, "r", encoding="utf-8").read().splitlines()
-    for keyword in tqdm(keywords, desc="Processing Keywords"):
+    for keyword in keywords:
         print(f"🔍 Searching for: {keyword}")
         videos = search_videos(keyword)
         if not videos:
             print("No short videos found.")
             continue
-        for video in tqdm(videos, desc="Downloading Videos"):
+        for video in videos:
             print(f"⬇ Downloading: {video['title']} ({video['duration']})")
             video_path = download_video(video)
             if detect_text_in_video(video_path) or detect_logo_in_video(video_path):
@@ -238,14 +248,17 @@ def main():
                 os.remove(video_path)
             else:
                 print("✅ Video is clean.")
+    progress_bar.update(1)
 
     # Step 4: Convert Script to Speech
-    print("🚀 Step 4: Converting Script to Speech...")
-    with tqdm(total=1, desc="Converting to Speech") as pbar:
-        audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
-        convert_text_to_speech(script_text, audio_filename)
-        pbar.update(1)
+    print("\n🔊 Converting Script to Speech...")
+    audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
+    convert_text_to_speech(script_text, audio_filename)
+    progress_bar.update(1)
 
+    # Close progress bar
+    progress_bar.close()
+    print("\n✅ Process completed successfully!\n")
 
 if __name__ == "__main__":
     main()

@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not">
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : changed keyword function to save just keywords instead of sentences">
+      <change afterPath="$PROJECT_DIR$/src/downloaded_videos/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/key_words/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/voice_over/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloaded_videos/Ronaldo Revenge  #cr7 #shorts.mp4" beforePathEscaped="$PROJECT_DIR$/src/downloaded_videos/Ronaldo Revenge 😱😱 ##cr7 ##shorts.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_221950.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_223342.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_words_20250316_224336.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/Key Words/key_words_20250316_221316.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/Key Words/key_words_20250316_221728.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/scripts/voice_over_20250316_221315.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/scripts/voice_over_20250316_221727.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_221949.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_223341.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/voice_over_20250316_224335.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old code/KeyWords.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old code/downloadtool.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old code/key words one word.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old code/sciprttool.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old code/voice over.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2u8bJcoVvu174yZQ7dfIOIhWEI8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,10 +55,15 @@
     &quot;Python.sciprttool.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/omar/PycharmProjects/VidScribe0.1/src/downloaded_videos&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\downloaded_videos" />
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\scripts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\axl" />
     </key>
@@ -250,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742157923562</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat : changed keyword function to save just keywords instead of sentences">
+      <option name="closed" value="true" />
+      <created>1742169987295</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742169987296</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -264,6 +277,7 @@
     <MESSAGE value="util : fixed some issues in code" />
     <MESSAGE value="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes" />
     <MESSAGE value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
+    <MESSAGE value="feat : changed keyword function to save just keywords instead of sentences" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : changed keyword function to save just keywords instead of sentences" />
   </component>
 </project>
