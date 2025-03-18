@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Update code of donload tool &lt;has isssues&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yolov5su.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yolov8n.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ازاي تشغل اليوتيوب والشاشه مقفوله وبدون اعلانات #تعلم_على_تيك_توك #techiteasy #tech #iphonetricks #iphonehacks .mp4.part" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/تطبيقات تحتاجها في 2024 #fyp #magic_tech #تطبيقات_أندرويد #تطبيقات .mp4.part" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/راقبوا الكراش براحتكم ماتقلقوش  #fypシ #techtok .mp4" beforePathEscaped="$PROJECT_DIR$/src/راقبوا الكراش براحتكم ماتقلقوش 😂 ##fypシ ##techtok .mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/شرح تطبيق ثريدز الخاص بالانستجرام #threads #انستقرام #instagram #ثريد #phone #iphonebandag .mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/كيف تمنع ظهور المحتوى الحساس في انستقرام ✅ #انستقرام #انستا #انستقرامي #instagram #insta .mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/‎كل اللى انت محتاج تعرفه عن توثيق الحساب بتاعك على انستجرام  . #meta #metaverified #verification #bluemark #instagramverification #توثيق #توثيق_انستقرام #انستجرام #انستقرام #ميتا .mp4" beforePathEscaped="$PROJECT_DIR$/src/‎كل اللى انت محتاج تعرفه عن توثيق الحساب بتاعك على انستجرام 👌🏼 . ##meta ##metaverified ##verification ##bluemark ##instagramverification ##توثيق ##توثيق_انستقرام ##انستجرام ##انستقرام ##ميتا .mp4" beforeDir="false" />
-    </list>
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Update code of keyword &lt;add title to every keyword&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -315,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741830908687</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="util : Update code of keyword &lt;add title to every keyword&gt;">
+      <option name="closed" value="true" />
+      <created>1742339152922</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742339152922</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -330,6 +325,7 @@
     <MESSAGE value="util : Output of Key words in file &lt;Key words&gt;&#10;util : change name of file" />
     <MESSAGE value="util : Change API Key" />
     <MESSAGE value="util : Save the output into file voice over and fix some issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="util : Save the output into file voice over and fix some issues" />
+    <MESSAGE value="util : Update code of keyword &lt;add title to every keyword&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="util : Update code of keyword &lt;add title to every keyword&gt;" />
   </component>
 </project>
