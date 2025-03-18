@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Update code of donload tool &lt;has isssues&gt;" />
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Update code of donload tool &lt;has isssues&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yolov5su.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yolov8n.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ازاي تشغل اليوتيوب والشاشه مقفوله وبدون اعلانات #تعلم_على_تيك_توك #techiteasy #tech #iphonetricks #iphonehacks .mp4.part" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/تطبيقات تحتاجها في 2024 #fyp #magic_tech #تطبيقات_أندرويد #تطبيقات .mp4.part" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/راقبوا الكراش براحتكم ماتقلقوش  #fypシ #techtok .mp4" beforePathEscaped="$PROJECT_DIR$/src/راقبوا الكراش براحتكم ماتقلقوش 😂 ##fypシ ##techtok .mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/شرح تطبيق ثريدز الخاص بالانستجرام #threads #انستقرام #instagram #ثريد #phone #iphonebandag .mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/كيف تمنع ظهور المحتوى الحساس في انستقرام ✅ #انستقرام #انستا #انستقرامي #instagram #insta .mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/‎كل اللى انت محتاج تعرفه عن توثيق الحساب بتاعك على انستجرام  . #meta #metaverified #verification #bluemark #instagramverification #توثيق #توثيق_انستقرام #انستجرام #انستقرام #ميتا .mp4" beforePathEscaped="$PROJECT_DIR$/src/‎كل اللى انت محتاج تعرفه عن توثيق الحساب بتاعك على انستجرام 👌🏼 . ##meta ##metaverified ##verification ##bluemark ##instagramverification ##توثيق ##توثيق_انستقرام ##انستجرام ##انستقرام ##ميتا .mp4" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,9 +49,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2u8bJcoVvu174yZQ7dfIOIhWEI8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,6 +83,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
