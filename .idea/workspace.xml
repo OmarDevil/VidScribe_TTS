@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Save the output into file voice over and fix some issues">
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="bug : error fixed and the code is clean now until makeing new bugs xD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloadtool.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloadtool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloaded_videos/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_words/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/voice_over/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,48 +25,45 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Amar0005"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/OmarDevil/VidScribe.git",
-    "accountId": "1b5604db-3cdf-49c0-b6cc-cc1a6666616d"
-  }
-}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2u8bJcoVvu174yZQ7dfIOIhWEI8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.KeyWords.executor": "Run",
-    "Python.downloadtool.executor": "Run",
-    "Python.key words.executor": "Run",
-    "Python.sciprttool.executor": "Run",
-    "Python.voice over.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.KeyWords.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sciprttool.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/omar/PycharmProjects/VidScribe0.1/src/downloaded_videos&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\downloaded_videos" />
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\scripts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\axl" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.downloadtool">
+  <component name="RunManager" selected="Python.main">
     <configuration name="KeyWords" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
@@ -85,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="downloadtool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,29 +99,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/downloadtool.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="key words one word" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="VidScribe0.1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\VidScribe\src\key words one word.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,42 +130,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="voice over" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="VidScribe0.1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/voice over.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.downloadtool" />
-        <item itemvalue="Python.voice over" />
-        <item itemvalue="Python.key words one word" />
-        <item itemvalue="Python.sciprttool" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.KeyWords" />
+        <item itemvalue="Python.sciprttool" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-14705d77f0bb-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.25659.43" />
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
       </set>
     </attachedChunks>
   </component>
@@ -271,39 +226,47 @@
       <option name="project" value="LOCAL" />
       <updated>1741653347404</updated>
     </task>
-    <task id="LOCAL-00010" summary="util : Output of Scrpit in file &lt;Scripts&gt;">
+    <task id="LOCAL-00010" summary="util : fixed some issues in code">
       <option name="closed" value="true" />
-      <created>1741828353844</created>
+      <created>1741653808997</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1741828353844</updated>
+      <updated>1741653808997</updated>
     </task>
-    <task id="LOCAL-00011" summary="util : Output of Key words in file &lt;Key words&gt;&#10;util : change name of file">
+    <task id="LOCAL-00011" summary="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes">
       <option name="closed" value="true" />
-      <created>1741830134952</created>
+      <created>1742155546666</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1741830134952</updated>
+      <updated>1742155546666</updated>
     </task>
-    <task id="LOCAL-00012" summary="util : Change API Key">
+    <task id="LOCAL-00012" summary="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not">
       <option name="closed" value="true" />
-      <created>1741830530707</created>
+      <created>1742157923562</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1741830530707</updated>
+      <updated>1742157923562</updated>
     </task>
-    <task id="LOCAL-00013" summary="util : Save the output into file voice over and fix some issues">
+    <task id="LOCAL-00013" summary="feat : changed keyword function to save just keywords instead of sentences">
       <option name="closed" value="true" />
-      <created>1741830908687</created>
+      <created>1742169987295</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1741830908687</updated>
+      <updated>1742169987296</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="bug : error fixed and the code is clean now until makeing new bugs xD">
+      <option name="closed" value="true" />
+      <created>1742178419730</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742178419730</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -314,10 +277,11 @@
     <MESSAGE value="feat : code to download videos" />
     <MESSAGE value="util : added requirements.txt file" />
     <MESSAGE value="util : merged all files in one file &lt;main.py&gt;&#10;util : added type-hinting method" />
-    <MESSAGE value="util : Output of Scrpit in file &lt;Scripts&gt;" />
-    <MESSAGE value="util : Output of Key words in file &lt;Key words&gt;&#10;util : change name of file" />
-    <MESSAGE value="util : Change API Key" />
-    <MESSAGE value="util : Save the output into file voice over and fix some issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="util : Save the output into file voice over and fix some issues" />
+    <MESSAGE value="util : fixed some issues in code" />
+    <MESSAGE value="feat : added loading bars at each step + step name&#10;util : moved old python files into folder &gt; old codes" />
+    <MESSAGE value="bug : there is an error in code whoever works on code next try to fix it please and report me on whatsapp if U fix it or not" />
+    <MESSAGE value="feat : changed keyword function to save just keywords instead of sentences" />
+    <MESSAGE value="bug : error fixed and the code is clean now until makeing new bugs xD" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug : error fixed and the code is clean now until makeing new bugs xD" />
   </component>
 </project>
