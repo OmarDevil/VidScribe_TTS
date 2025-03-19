@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : now the code will skip any live videos">
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added new api key to download videos from dailymotion if no results found in youtube">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
     </list>
@@ -314,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742338919997</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat : added new api key to download videos from dailymotion if no results found in youtube">
+      <option name="closed" value="true" />
+      <created>1742341190649</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1742341190649</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -330,6 +338,7 @@
     <MESSAGE value="util : Change API Key" />
     <MESSAGE value="util : Save the output into file voice over and fix some issues" />
     <MESSAGE value="feat : now the code will skip any live videos" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : now the code will skip any live videos" />
+    <MESSAGE value="feat : added new api key to download videos from dailymotion if no results found in youtube" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : added new api key to download videos from dailymotion if no results found in youtube" />
   </component>
 </project>
