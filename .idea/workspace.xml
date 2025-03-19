@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="util : Update code of keyword &lt;add title to every keyword&gt;" />
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : now the code will skip any live videos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +39,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2u8bJcoVvu174yZQ7dfIOIhWEI8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -70,7 +75,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -302,13 +306,13 @@
       <option name="project" value="LOCAL" />
       <updated>1741830908687</updated>
     </task>
-    <task id="LOCAL-00014" summary="util : Update code of keyword &lt;add title to every keyword&gt;">
+    <task id="LOCAL-00014" summary="feat : now the code will skip any live videos">
       <option name="closed" value="true" />
-      <created>1742339152922</created>
+      <created>1742338919997</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1742339152922</updated>
+      <updated>1742338919997</updated>
     </task>
     <option name="localTasksCounter" value="15" />
     <servers />
@@ -325,7 +329,7 @@
     <MESSAGE value="util : Output of Key words in file &lt;Key words&gt;&#10;util : change name of file" />
     <MESSAGE value="util : Change API Key" />
     <MESSAGE value="util : Save the output into file voice over and fix some issues" />
-    <MESSAGE value="util : Update code of keyword &lt;add title to every keyword&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="util : Update code of keyword &lt;add title to every keyword&gt;" />
+    <MESSAGE value="feat : now the code will skip any live videos" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : now the code will skip any live videos" />
   </component>
 </project>

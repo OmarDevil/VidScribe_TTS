@@ -9,6 +9,9 @@ import yt_dlp
 from ultralytics import YOLO
 import google.generativeai as genai
 from tqdm import tqdm
+import json
+import time
+from youtube_search import YoutubeSearch
 
 # Constants
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
@@ -68,6 +71,16 @@ def save_script_to_docx(text: str, filename: str) -> None:
     print(f"✅ Voice Over Script saved as {file_path}")
 
 
+def save_script_to_txt(text: str, filename: str) -> None:
+    """
+    Save the generated script to a text file in the scripts folder.
+    """
+    file_path = os.path.join(SCRIPTS_FOLDER, filename)
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(text)
+    print(f"✅ Voice Over Script saved as {file_path}")
+
+
 def extract_keywords(text: str, main_topic: str) -> List[str]:
     """
     Extract important keywords from the script and ensure each keyword contains the main topic only once.
@@ -115,11 +128,7 @@ def save_keywords(keywords: List[str]) -> str:
     return file_path
 
 
-from youtube_search import YoutubeSearch
-import json
-import time
-
-def search_videos(query: str, max_results=10, max_retries=3):
+def search_videos(query: str, max_results=10, max_retries=3) -> List[Dict[str, Any]]:
     """
     Search YouTube for videos containing the query in their title.
     """
@@ -149,33 +158,62 @@ def search_videos(query: str, max_results=10, max_retries=3):
     return []  # إرجاع قائمة فارغة لو كل المحاولات فشلت
 
 
-def get_video_duration(duration_str: str) -> float:
+def search_dailymotion_videos(query: str, max_results: int = 10) -> List[Dict[str, Any]]:
     """
-    Convert YouTube duration (MM:SS or HH:MM:SS) to seconds.
+    Search Dailymotion for videos matching the query.
     """
-    if isinstance(duration_str, int):
-        return duration_str
-    parts = list(map(int, duration_str.split(":")))
-    if len(parts) == 2:
-        return parts[0] * 60 + parts[1]
-    elif len(parts) == 3:
-        return parts[0] * 3600 + parts[1] * 60 + parts[2]
-    return float('inf')
+    url = "https://api.dailymotion.com/videos"
+    params = {
+        "search": query,
+        "limit": max_results,
+        "fields": "id,title,duration,url",
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return [video for video in data.get("list", []) if video.get("duration", float('inf')) <= 60]
+    return []
 
 
-def download_video(video: Dict[str, Any], output_dir: str = DOWNLOADED_VIDEOS_FOLDER) -> str:
+def download_video(video: Dict[str, Any], platform: str = "youtube", output_dir: str = DOWNLOADED_VIDEOS_FOLDER) -> Optional[str]:
     """
-    Download the given video using yt-dlp without merging formats.
+    Download the given video using yt-dlp.
     """
     os.makedirs(output_dir, exist_ok=True)
-    video_url = f"https://www.youtube.com{video['url_suffix']}"
+
+    if platform == "youtube":
+        video_url = f"https://www.youtube.com{video['url_suffix']}"
+    elif platform == "dailymotion":
+        video_url = video.get("url")
+    else:
+        print(f"❌ Unsupported platform: {platform}")
+        return None
+
+    # Check if the video is a live stream
+    if is_live_stream(video_url):
+        print(f"❌ Skipping live stream: {video['title']}")
+        return None
+
     ydl_opts = {
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
-        'format': 'bestvideo[ext=mp4]',
+        'format': 'bestvideo[height<=480][ext=mp4]/bestvideo[ext=mp4]',  # جودة 480p أو الجودة المتاحة
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([video_url])
     return os.path.join(output_dir, f"{video['title']}.mp4")
+
+
+def is_live_stream(video_url: str) -> bool:
+    """
+    Check if the video is a live stream.
+    """
+    ydl_opts = {
+        'quiet': True,
+        'extract_flat': True,
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(video_url, download=False)
+        return info.get('is_live', False)
 
 
 def detect_text_in_video(video_path: str) -> bool:
@@ -253,7 +291,7 @@ def main():
     print("\n🚀 Starting the process...\n")
 
     # Step 1: Get User Input Before Starting the Progress Bar
-    topic = input("\n📌 Enter your script topic : ")
+    topic = input("\n📌 Enter your script topic: ")
 
     # Configure the progress bar with custom styling
     progress_bar = tqdm(
@@ -281,13 +319,23 @@ def main():
     keywords = open(keywords_filename, "r", encoding="utf-8").read().splitlines()
     for keyword in keywords:
         print(f"🔍 Searching for videos with title containing: {keyword}")
-        videos = search_videos(keyword)  # Use the keyword as the title for search
+
+        # البحث في YouTube أولاً
+        videos = search_videos(keyword)
         if not videos:
-            print(f"No videos found with title containing: {keyword}")
+            print(f"⚠ No videos found on YouTube, searching on Dailymotion...")
+            videos = search_dailymotion_videos(keyword)  # البحث في Dailymotion إذا لم يتم العثور على نتائج في YouTube
+
+        if not videos:
+            print(f"❌ No videos found on both platforms for: {keyword}")
             continue
+
         for video in videos:
-            print(f"⬇ Downloading: {video['title']} ({video['duration']})")
-            video_path = download_video(video)
+            platform = "youtube" if "url_suffix" in video else "dailymotion"
+            print(f"⬇ Downloading from {platform}: {video['title']} ({video.get('duration', 'N/A')})")
+            video_path = download_video(video, platform)
+            if video_path is None:  # Skip if the video is a live stream
+                continue
             if detect_text_in_video(video_path) or detect_logo_in_video(video_path):
                 print("❌ Video contains text or logos, deleting...")
                 os.remove(video_path)
