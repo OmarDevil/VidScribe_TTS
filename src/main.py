@@ -9,7 +9,6 @@ from ultralytics import YOLO
 import google.generativeai as genai
 from tqdm import tqdm
 import json
-import time
 from youtube_search import YoutubeSearch
 
 # Constants
@@ -337,7 +336,8 @@ def main():
 
         for video in videos:
             platform = "youtube" if "url_suffix" in video else "dailymotion" if "url" in video else "pexels"
-            print(f"⬇ Downloading from {platform}: {video['title']} ({video.get('duration', 'N/A')})")
+            video_title = video.get("title", "Unknown Title")
+            print(f"⬇ Downloading from {platform}: {video_title} ({video.get('duration', 'N/A')})")
             video_path = download_video(video, platform)
             if video_path is None:  # Skip if the video is a live stream
                 continue
