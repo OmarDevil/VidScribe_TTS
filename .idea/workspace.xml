@@ -7,12 +7,6 @@
     <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="pug : fix issue of download">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/downloaded_videos/Anti-Muslim video advert being investigated in Canada ｜ #AJshorts.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/downloaded_videos/Muslim Challenges Qadiani To Read Surah Al-Fatiha ｜ Adnan Rashid.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/downloaded_videos/Muslim Community｜ PM Urges Muslim Community to Introspect： 'Country Progressing, Why Feel Deprived？.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/key_words/key_words_20250319_221725.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/scripts/voice_over_20250319_031912.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/scripts/voice_over_20250319_221724.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742416628454</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="pug : fix issue of download">
+      <option name="closed" value="true" />
+      <created>1744211399787</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1744211399787</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
