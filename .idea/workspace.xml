@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="pug : fix issue of download">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : replaced evenaps voice over with tts model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +50,7 @@
     &quot;Python.key words.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.sciprttool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;Python.voice over.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -132,7 +130,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sciprttool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,7 +143,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sciprttool.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,17 +177,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.downloadtool" />
         <item itemvalue="Python.voice over" />
         <item itemvalue="Python.key words one word" />
-        <item itemvalue="Python.sciprttool" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-14705d77f0bb-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.25659.43" />
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
       </set>
     </attachedChunks>
   </component>
@@ -322,23 +320,31 @@
       <option name="project" value="LOCAL" />
       <updated>1742341190649</updated>
     </task>
-    <task id="LOCAL-00016" summary="pug : fix issue of download">
+    <task id="LOCAL-00016" summary="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min">
       <option name="closed" value="true" />
-      <created>1742416628454</created>
+      <created>1742346951447</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1742416628454</updated>
+      <updated>1742346951447</updated>
     </task>
-    <task id="LOCAL-00017" summary="pug : fix issue of download">
+    <task id="LOCAL-00017" summary="feat : replaced evenaps voice over with tts model">
       <option name="closed" value="true" />
-      <created>1744211399787</created>
+      <created>1744211512873</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1744211399787</updated>
+      <updated>1744211512873</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat : replaced evenaps voice over with tts model">
+      <option name="closed" value="true" />
+      <created>1744211805503</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744211805503</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -355,7 +361,8 @@
     <MESSAGE value="util : Save the output into file voice over and fix some issues" />
     <MESSAGE value="feat : now the code will skip any live videos" />
     <MESSAGE value="feat : added new api key to download videos from dailymotion if no results found in youtube" />
-    <MESSAGE value="pug : fix issue of download" />
-    <option name="LAST_COMMIT_MESSAGE" value="pug : fix issue of download" />
+    <MESSAGE value="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min" />
+    <MESSAGE value="feat : replaced evenaps voice over with tts model" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : replaced evenaps voice over with tts model" />
   </component>
 </project>
