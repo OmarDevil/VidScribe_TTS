@@ -10,12 +10,14 @@ import google.generativeai as genai
 from tqdm import tqdm
 import json
 from youtube_search import YoutubeSearch
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Constants
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
 ELEVENLABS_API_KEY = "sk_9cb8fc1fa8d204870d890050a10f6f5e3fc144e1a6b783fd"
 ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
-PEXELS_API_KEY = "LtFO8qCo0QX7i5imZWoNeKcuseBMOLE4e31zcVwdno5FDhubyj3GZpMV"  # Replace with your Pexels API key
+PEXELS_API_KEY = "2aoHx5GeCMB7lOZvplRpapSUQaKFXnRrc3iEP7I4NgimtBUDIybg5GzM"  # Replace with your Pexels API key
 
 # Configure Gemini API
 genai.configure(api_key=GENAI_API_KEY)
@@ -72,10 +74,11 @@ def save_script_to_txt(text: str, filename: str) -> None:
 def extract_keywords(text: str, main_topic: str) -> List[str]:
     """
     Extract important keywords from the script and ensure each keyword contains the main topic only once.
+    Returns a maximum of 10 keywords.
     """
     model = genai.GenerativeModel("gemini-1.5-flash")
     prompt = (f"Extract the most important keywords from the following script and return them as a comma-separated "
-              f"list in English. Ensure each keyword includes '{main_topic}' only once:\n\n{text}")
+              f"list in English. Ensure each keyword includes '{main_topic}' only once. Return a maximum of 10 keywords:\n\n{text}")
 
     response = model.generate_content(prompt)
     if response.text:
@@ -97,7 +100,8 @@ def extract_keywords(text: str, main_topic: str) -> List[str]:
 
             final_keywords.append(kw)
 
-        return final_keywords
+        # Return only the first 10 keywords
+        return final_keywords[:10]
 
     return []
 
@@ -129,23 +133,6 @@ def search_youtube_videos(query: str, max_results: int = 10) -> List[Dict[str, A
         return []
 
 
-def search_dailymotion_videos(query: str, max_results: int = 10) -> List[Dict[str, Any]]:
-    """
-    Search Dailymotion for videos matching the query.
-    """
-    url = "https://api.dailymotion.com/videos"
-    params = {
-        "search": query,
-        "limit": max_results,
-        "fields": "id,title,duration,url",
-    }
-    response = requests.get(url, params=params)
-    if response.status_code == 200:
-        data = response.json()
-        return [video for video in data.get("list", []) if video.get("duration", float('inf')) <= 60]
-    return []
-
-
 def search_pexels_videos(query: str, max_results: int = 10) -> List[Dict[str, Any]]:
     """
     Search Pexels for videos matching the query.
@@ -155,6 +142,9 @@ def search_pexels_videos(query: str, max_results: int = 10) -> List[Dict[str, An
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
         videos = response.json().get("videos", [])
+        for video in videos:
+            if "alt" not in video:  # Add 'alt' key if it doesn't exist
+                video["alt"] = f"Pexels Video {video.get('id', 'Unknown')}"
         return [video for video in videos if video.get("duration", float('inf')) <= 60]
     return []
 
@@ -181,26 +171,31 @@ def download_video(video: Dict[str, Any], platform: str = "youtube", output_dir:
 
     if platform == "youtube":
         video_url = f"https://www.youtube.com{video['url_suffix']}"
-    elif platform == "dailymotion":
-        video_url = video.get("url")
+        video_title = video.get("title", "Unknown Title")
     elif platform == "pexels":
         video_url = video["video_files"][0]["link"]  # Use the first available video file
+        video_title = video.get("alt", "Unknown Title")  # Use 'alt' as the title for Pexels videos
     else:
         print(f"❌ Unsupported platform: {platform}")
         return None
 
     # Check if the video is a live stream
     if is_live_stream(video_url):
-        print(f"❌ Skipping live stream: {video['title']}")
+        print(f"❌ Skipping live stream: {video_title}")
         return None
 
     ydl_opts = {
-        'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
-        'format': 'bestvideo[height<=480][ext=mp4]/bestvideo[ext=mp4]',  # 480p quality or best available
+        'outtmpl': os.path.join(output_dir, f"{video_title}.%(ext)s"),  # Use the video title in the output filename
+        'format': 'bestvideo[height<=480][ext=mp4]/best[ext=mp4]/best',  # Fallback to any available format
+        'quiet': True,  # Suppress yt-dlp output (including warnings)
     }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([video_url])
-    return os.path.join(output_dir, f"{video['title']}.mp4")
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([video_url])
+        return os.path.join(output_dir, f"{video_title}.mp4")
+    except yt_dlp.utils.DownloadError as e:
+        print(f"❌ Failed to download video: {e}")
+        return None
 
 
 def is_live_stream(video_url: str) -> bool:
@@ -216,21 +211,25 @@ def is_live_stream(video_url: str) -> bool:
         return info.get('is_live', False)
 
 
-def detect_text_in_video(video_path: str) -> bool:
+def detect_text_in_video_fast(video_path: str, frame_interval: int = 90) -> bool:
     """
-    Detect text in video frames using OpenCV and Tesseract OCR.
+    Detect text in video frames using OpenCV and Tesseract OCR (optimized).
     """
     cap = cv2.VideoCapture(video_path)
+    frame_count = 0
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             break
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        text = pytesseract.image_to_string(gray)
-        if text.strip():
-            print("❌ Text detected in video!")
-            cap.release()
-            return True
+        if frame_count % frame_interval == 0:
+            frame = cv2.resize(frame, (192, 320))  # Reduce frame size
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            text = pytesseract.image_to_string(gray)
+            if text.strip():
+                print("❌ Text detected in video!")
+                cap.release()
+                return True
+        frame_count += 1
     cap.release()
     return False
 
@@ -246,6 +245,7 @@ def detect_logo_in_video(video_path: str) -> bool:
         ret, frame = cap.read()
         if not ret:
             break
+        frame = cv2.resize(frame, (192, 320))  # Reduce frame size
         results = yolo_model(frame)
         for result in results:
             for box in result.boxes:
@@ -286,6 +286,50 @@ def convert_text_to_speech(text: str, output_file: str) -> None:
     print(f"✅ Audio saved as {file_path}")
 
 
+def search_and_download_videos_parallel(keyword: str, max_videos_per_platform: int = 2) -> None:
+    """
+    Search and download videos from YouTube and Pexels for a given keyword in parallel.
+    Downloads a maximum of `max_videos_per_platform` videos from each platform.
+    """
+    platforms = [
+        ("youtube", search_youtube_videos),
+        ("pexels", search_pexels_videos),
+    ]
+
+    with ThreadPoolExecutor() as executor:
+        futures = []
+        for platform, search_function in platforms:
+            print(f"🔍 Searching for videos on {platform} with title containing: {keyword}")
+            videos = search_function(keyword, max_results=max_videos_per_platform * 2)
+
+            if not videos:
+                print(f"⚠ No videos found on {platform} for: {keyword}")
+                continue
+
+            for video in videos[:max_videos_per_platform]:
+                futures.append(executor.submit(download_video, video, platform))
+
+        for future in tqdm(as_completed(futures), total=len(futures), desc="Downloading videos"):
+            video_path = future.result()
+            if video_path:
+                if detect_text_in_video_fast(video_path) or detect_logo_in_video(video_path):
+                    print("❌ Video contains text or logos, deleting...")
+                    os.remove(video_path)
+                else:
+                    print("✅ Video is clean.")
+
+
+def loading_animation(duration: int = 3):
+    """
+    Display a simple loading animation.
+    """
+    for _ in range(duration):
+        for symbol in "⣾⣽⣻⢿⡿⣟⣯⣷":
+            print(f"\rLoading {symbol}", end="", flush=True)
+            time.sleep(0.1)
+    print("\rLoading complete! ✅")
+
+
 def main():
     steps = 4  # Total number of main steps
     print("\n🚀 Starting the process...\n")
@@ -303,6 +347,7 @@ def main():
 
     # Step 1: Generate Voice Over Script
     print("\n✍️ Generating Voice Over Script...")
+    loading_animation(2)  # Simulate loading
     script_text = generate_voice_over_script(topic)
     script_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.txt")
     save_script_to_txt(script_text, script_filename)
@@ -310,6 +355,7 @@ def main():
 
     # Step 2: Extract Key Sentences
     print("\n📑 Extracting Key Sentences...")
+    loading_animation(2)  # Simulate loading
     key_sentences = extract_keywords(script_text, topic)  # Pass the main topic to include it in keywords
     keywords_filename = save_keywords(key_sentences)
     progress_bar.update(1)
@@ -317,39 +363,13 @@ def main():
     # Step 3: Search and Download Videos
     print("\n🎥 Searching and Downloading Videos...")
     keywords = open(keywords_filename, "r", encoding="utf-8").read().splitlines()
-    for keyword in keywords:
-        print(f"🔍 Searching for videos with title containing: {keyword}")
-
-        # Search on YouTube
-        videos = search_youtube_videos(keyword)
-        if not videos:
-            print(f"⚠ No videos found on YouTube, searching on Dailymotion...")
-            videos = search_dailymotion_videos(keyword)  # Search on Dailymotion if no results on YouTube
-
-        if not videos:
-            print(f"⚠ No videos found on Dailymotion, searching on Pexels...")
-            videos = search_pexels_videos(keyword)  # Search on Pexels if no results on Dailymotion
-
-        if not videos:
-            print(f"❌ No videos found on any platform for: {keyword}")
-            continue
-
-        for video in videos:
-            platform = "youtube" if "url_suffix" in video else "dailymotion" if "url" in video else "pexels"
-            video_title = video.get("title", "Unknown Title")
-            print(f"⬇ Downloading from {platform}: {video_title} ({video.get('duration', 'N/A')})")
-            video_path = download_video(video, platform)
-            if video_path is None:  # Skip if the video is a live stream
-                continue
-            if detect_text_in_video(video_path) or detect_logo_in_video(video_path):
-                print("❌ Video contains text or logos, deleting...")
-                os.remove(video_path)
-            else:
-                print("✅ Video is clean.")
+    for keyword in keywords[:2]:  # Use only the first 2 keywords
+        search_and_download_videos_parallel(keyword, max_videos_per_platform=2)  # Download 2 videos per platform
     progress_bar.update(1)
 
     # Step 4: Convert Script to Speech
     print("\n🔊 Converting Script to Speech...")
+    loading_animation(2)  # Simulate loading
     audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
     convert_text_to_speech(script_text, audio_filename)
     progress_bar.update(1)
