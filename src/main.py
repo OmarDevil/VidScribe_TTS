@@ -11,11 +11,11 @@ from tqdm import tqdm
 import json
 import time
 from youtube_search import YoutubeSearch
+import subprocess
+import sys
 
 # Constants
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
-ELEVENLABS_API_KEY = "sk_9cb8fc1fa8d204870d890050a10f6f5e3fc144e1a6b783fd"
-ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
 PEXELS_API_KEY = "LtFO8qCo0QX7i5imZWoNeKcuseBMOLE4e31zcVwdno5FDhubyj3GZpMV"  # Replace with your Pexels API key
 
 # Configure Gemini API
@@ -174,7 +174,8 @@ def get_video_duration(duration_str: str) -> float:
     return float('inf')
 
 
-def download_video(video: Dict[str, Any], platform: str = "youtube", output_dir: str = DOWNLOADED_VIDEOS_FOLDER) -> Optional[str]:
+def download_video(video: Dict[str, Any], platform: str = "youtube", output_dir: str = DOWNLOADED_VIDEOS_FOLDER) -> \
+Optional[str]:
     """
     Download the given video using yt-dlp.
     """
@@ -259,34 +260,6 @@ def detect_logo_in_video(video_path: str) -> bool:
     return False
 
 
-def convert_text_to_speech(text: str, output_file: str) -> None:
-    """
-    Convert text to speech using ElevenLabs API and save it in the voice_over folder.
-    """
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{ELEVENLABS_VOICE_ID}"
-    headers = {
-        "Accept": "audio/mpeg",
-        "Content-Type": "application/json",
-        "xi-api-key": ELEVENLABS_API_KEY
-    }
-    data = {
-        "text": text,
-        "model_id": "eleven_multilingual_v2",
-        "voice_settings": {
-            "stability": 0.5,
-            "similarity_boost": 0.5
-        }
-    }
-    response = requests.post(url, json=data, headers=headers)
-    response.raise_for_status()
-    file_path = os.path.join(VOICE_OVER_FOLDER, output_file)
-    with open(file_path, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-    print(f"✅ Audio saved as {file_path}")
-
-
 def main():
     steps = 4  # Total number of main steps
     print("\n🚀 Starting the process...\n")
@@ -346,12 +319,6 @@ def main():
                 os.remove(video_path)
             else:
                 print("✅ Video is clean.")
-    progress_bar.update(1)
-
-    # Step 4: Convert Script to Speech
-    print("\n🔊 Converting Script to Speech...")
-    audio_filename = datetime.now().strftime("voice_over_%Y%m%d_%H%M%S.mp3")
-    convert_text_to_speech(script_text, audio_filename)
     progress_bar.update(1)
 
     # Close progress bar
