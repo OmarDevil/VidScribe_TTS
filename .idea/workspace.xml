@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min">
-      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : replaced evenaps voice over with tts model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -333,7 +328,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742346951447</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat : replaced evenaps voice over with tts model">
+      <option name="closed" value="true" />
+      <created>1744211512873</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1744211512873</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat : replaced evenaps voice over with tts model">
+      <option name="closed" value="true" />
+      <created>1744211805503</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744211805503</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -351,6 +362,7 @@
     <MESSAGE value="feat : now the code will skip any live videos" />
     <MESSAGE value="feat : added new api key to download videos from dailymotion if no results found in youtube" />
     <MESSAGE value="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min" />
+    <MESSAGE value="feat : replaced evenaps voice over with tts model" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : replaced evenaps voice over with tts model" />
   </component>
 </project>
