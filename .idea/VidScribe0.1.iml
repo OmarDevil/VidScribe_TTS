@@ -5,7 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/.venv10" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.12 (VidScribe0.1)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 virtualenv at C:\Users\omar\PycharmProjects\VidScribe0.1\.venv10" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
