@@ -4,6 +4,7 @@ import requests
 import os
 import re
 import google.generativeai as genai
+import subprocess
 
 # Constants
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
@@ -132,9 +133,29 @@ def download_video(video: Dict[str, Any], output_dir: str = DOWNLOADED_VIDEOS_FO
     except Exception as e:
         print(f"❌ Download failed for {video_title}: {e}")
         return None
+    
 
+def run_tts_with_python310():
+    """
+    Run the TTS script using Python 3.10 from the .venv10 environment.
+    """
+    python310_path = os.path.join(os.getcwd(), ".venv10", "Scripts", "python.exe")
+    tts_script_path = os.path.join("src", "tts.py")
 
-def main():
+    try:
+        result = subprocess.run(
+            [python310_path, tts_script_path],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        print("[INFO] TTS script output:", result.stdout)
+    except subprocess.CalledProcessError as e:
+        print("[ERROR] TTS script failed:", e.stderr)
+
+        
+
+def main() -> None:
     topic = input("📌 Enter your script topic: ")
 
     # Generate script
@@ -151,6 +172,9 @@ def main():
         if videos:
             video = videos[0]  # Download only the first video for each keyword
             download_video(video)
+
+    # Run TTS script
+    run_tts_with_python310()
 
 
 if __name__ == "__main__":
