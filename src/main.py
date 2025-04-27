@@ -5,6 +5,8 @@ import os
 import re
 import google.generativeai as genai
 import subprocess
+from pathlib import Path
+
 
 # Constants
 GENAI_API_KEY = "AIzaSyAJexsERXMnXxVd7w5zBiHqy2TiXwU8Gis"
@@ -133,14 +135,17 @@ def download_video(video: Dict[str, Any], output_dir: str = DOWNLOADED_VIDEOS_FO
     except Exception as e:
         print(f"❌ Download failed for {video_title}: {e}")
         return None
-    
+
 
 def run_tts_with_python310():
     """
     Run the TTS script using Python 3.10 from the .venv10 environment.
     """
-    python310_path = os.path.join(os.getcwd(), ".venv10", "Scripts", "python.exe")
-    tts_script_path = os.path.join("src", "tts.py")
+    # تحديد مسار Python 3.10 داخل .venv10 بشكل موثوق
+    python310_path = str(Path(__file__).parent.parent / ".venv10" / "Scripts" / "python.exe")
+
+    # تحديد مسار سكريبت tts.py
+    tts_script_path = str(Path(__file__).parent / "tts.py")
 
     try:
         result = subprocess.run(
@@ -149,9 +154,9 @@ def run_tts_with_python310():
             capture_output=True,
             text=True
         )
-        print("[INFO] TTS script output:", result.stdout)
+        print("[INFO] TTS script output:\n", result.stdout)
     except subprocess.CalledProcessError as e:
-        print("[ERROR] TTS script failed:", e.stderr)
+        print("[ERROR] TTS script failed:\n", e.stderr)
 
         
 
