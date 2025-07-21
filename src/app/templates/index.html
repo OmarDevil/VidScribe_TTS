@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidScribe</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 20px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #008dca 0%, #00aaff 100%);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.3s;
+    }
+
+    .sidebar-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .bar {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      margin: 5px 0;
+      border-radius: 3px;
+      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    .sidebar-toggle.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .sidebar-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .sidebar-toggle.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: linear-gradient(180deg, #1e1e2e 0%, #1a1a2e 100%);
+      transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+      padding-top: 80px;
+      z-index: 1000;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: all 0.3s;
+      font-size: 1rem;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(0, 170, 255, 0.1);
+      color: #00aaff;
+      border-left: 4px solid #00aaff;
+      padding-left: 30px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #1e1e1e;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      padding: 15px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #252525;
+      color: #f0f0f0;
+      resize: vertical;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #252525;
+      color: #f0f0f0;
+      margin-top: 20px;
+      font-size: 1rem;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0f0f0'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00aaff 0%, #008dca 100%);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #008dca 0%, #00aaff 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    audio {
+      margin-top: 25px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: #252525;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 15px;
+      font-style: italic;
+      color: #00aaff;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    #loading {
+      animation: pulse 1.5s infinite;
+    }
+
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+        padding: 8px 20px;
+      }
+    }
+
+     .logo-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+      .logo-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        background-color: rgb(53, 53, 93);
+        padding: 8px;
+        border-radius: 10px;
+      }
+
+      .logo-container img {
+        height: 90px;
+        width: auto;
+        display: block;
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="logo-container">
+  <img src="/static/logo.png" alt="VidScribe Logo">
+</div>
+
+  <div class="sidebar-toggle" id="toggleBtn">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="http://127.0.0.1:5000">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="http://127.0.0.1:5001">
+      <i class="fas fa-edit"></i> Video Editor
+    </a>
+    <a href="aboutus.html">
+      <i class="fas fa-info-circle"></i> About Us
+    </a>
+  </div>
+
+  <header>
+    <h1>VidScribe</h1>
+  </header>
+
+  <div class="container">
+    <textarea id="textInput" placeholder="Type or paste your text here to convert it to speech..."></textarea>
+
+    <select id="language">
+      <option value="en">English</option>
+      <option value="ar">Arabic</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+      <option value="de">German</option>
+      <option value="it">Italian</option>
+      <option value="pt">Portuguese</option>
+      <option value="zh-cn">Chinese</option>
+      <option value="ko">Korean</option>
+      <option value="ja">Japanese</option>
+      <option value="hi">Hindi</option>
+      <option value="pl">Polish</option>
+      <option value="tr">Turkish</option>
+      <option value="ru">Russian</option>
+      <option value="nl">Dutch</option>
+      <option value="cs">Czech</option>
+      <option value="hu">Hungarian</option>
+    </select>
+
+    <select id="speaker">
+      <option>Claribel Dervla</option>
+      <option>Daisy Studious</option>
+      <option>Tammie Ema</option>
+      <option>Gracie Wise</option>
+      <option>Alison Dietlinde</option>
+      <option>Ana Florence</option>
+      <option>Annmarie Nele</option>
+      <option>Asya Anara</option>
+      <option>Brenda Stern</option>
+      <option>Gitta Nikolina</option>
+      <option>Henriette Usha</option>
+      <option>Sofia Hellen</option>
+      <option>Tammy Grit</option>
+      <option>Tanja Adelina</option>
+      <option>Vjollca Johnnie</option>
+      <option>Andrew Chipper</option>
+      <option>Badr Odhiambo</option>
+      <option>Dionisio Schuyler</option>
+      <option>Royston Min</option>
+      <option>Viktor Eka</option>
+      <option>Abrahan Mack</option>
+      <option>Adde Michal</option>
+      <option>Baldur Sanjin</option>
+      <option>Craig Gutsy</option>
+      <option>Damien Black</option>
+      <option>Gilberto Mathias</option>
+      <option>Ilkin Urbano</option>
+      <option>Kazuhiko Atallah</option>
+      <option>Ludvig Milivoj</option>
+      <option>Suad Qasim</option>
+      <option>Torcull Diarmuid</option>
+      <option>Viktor Menelaos</option>
+      <option>Zacharie Aimilios</option>
+      <option>Nova Hogarth</option>
+      <option>Maja Ruoho</option>
+      <option>Uta Obando</option>
+      <option>Lidiya Szekeres</option>
+      <option>Chandra MacFarland</option>
+      <option>Szofi Granger</option>
+      <option>CamillaHolmström</option>
+      <option>Lilya Stainthorpe</option>
+      <option>Zofija Kendrick</option>
+      <option>Narelle Moon</option>
+      <option>Barbora MacLean</option>
+      <option>Alexandra Hisakawa</option>
+      <option>Alma María</option>
+      <option>Rosemary Okafor</option>
+      <option>Ige Behringer</option>
+      <option>Filip Traverse</option>
+      <option>Damjan Chapman</option>
+      <option>Wulf Carlevaro</option>
+      <option>Aaron Dreschner</option>
+      <option>Kumar Dahl</option>
+      <option>Eugenio Mataracı</option>
+      <option>Ferran Simen</option>
+      <option>Xavier Hayasaka</option>
+      <option>Luis Moray</option>
+      <option>Marcos Rudaski</option>
+    </select>
+
+    <button id="speakBtn">Convert to Speech</button>
+
+    <div id="loading">Generating audio, please wait...</div>
+
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const speakBtn = document.getElementById('speakBtn');
+    const loading = document.getElementById('loading');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+
+    speakBtn.addEventListener('click', async () => {
+      const text = document.getElementById('textInput').value;
+      const language = document.getElementById('language').value;
+      const speaker = document.getElementById('speaker').value;
+
+      if (!text || !language || !speaker) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      loading.style.display = "block";
+      audioPlayer.style.display = "none";
+      speakBtn.disabled = true;
+      speakBtn.textContent = "Processing...";
+
+      try {
+        const response = await fetch("/api/tts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text, language, speaker })
+        });
+
+        if (!response.ok) {
+          throw new Error("Error generating audio");
+        }
+
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        audioPlayer.src = audioUrl;
+        audioPlayer.style.display = "block";
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        loading.style.display = "none";
+        speakBtn.disabled = false;
+        speakBtn.textContent = "Convert to Speech";
+      }
+    });
+  </script>
+</body>
+</html>

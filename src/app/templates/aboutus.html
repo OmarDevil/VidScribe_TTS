@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - VidScribe</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+     * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+  
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        overflow-x: hidden;
+      }
+  
+      header {
+        text-align: center;
+        padding: 25px 20px;
+        background: #1a1a2e;
+        position: relative;
+        margin-bottom: 20px;
+      }
+  
+      header h1 {
+        font-size: 1.8rem;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 30px;
+        background: linear-gradient(90deg, #008dca 0%, #00aaff 100%);
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(0, 170, 255, 0.3);
+      }
+
+      .team-container {
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        gap: 20px;
+        
+        padding: 20px;
+        max-width: 100%;
+        min-height: 520px;
+        align-items: flex-start;
+      }
+
+      .member {
+        background: linear-gradient(145deg, #1e1e1e 0%, #252525 100%);
+        border-radius: 12px;
+        padding: 20px;
+        width: 250px;
+        height: 480px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .member::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #008dca 0%, #00aaff 100%);
+      }
+  
+      .member:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+      }
+  
+      .member img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        border: 2px solid #00aaff;
+        box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+  
+      .member:hover img {
+        transform: scale(1.04);
+        box-shadow: 0 6px 20px rgba(0, 170, 255, 0.5);
+      }
+  
+      .member h3 {
+        color: #00aaff;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+  
+      .member p {
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        color: #b0b0b0;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+  
+      .member .role {
+        color: #00aaff;
+        font-weight: 500;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+  
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 15px;
+        width: 100%;
+      }
+  
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: #252525;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s;
+        font-size: 1rem;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      }
+  
+      .social-icon:hover {
+        background-color: #00aaff;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+      }
+  
+      @media (max-width: 768px) {
+        .team-container {
+          padding: 15px;
+          justify-content: flex-start;
+        }
+        
+        .member {
+          width: 240px;
+          height: 460px;
+        }
+        
+        header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .member img {
+          width: 130px;
+          height: 130px;
+        }
+      }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(180deg, #1a1a2e 0%, #14142a 100%);
+  transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  padding-top: 80px;
+  z-index: 1000;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 14px 25px;
+  text-decoration: none;
+  color: #e0e0e0;
+  font-size: 1rem;
+  transition: all 0.3s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar a i {
+  margin-right: 12px;
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar a:hover {
+  background-color: rgba(0, 170, 255, 0.1);
+  color: #00aaff;
+  border-left: 4px solid #00aaff;
+  padding-left: 30px;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  left: 25px;
+  top: 25px;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s;
+}
+
+.sidebar-toggle:hover {
+  transform: scale(1.1);
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.sidebar-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.sidebar-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.sidebar-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+  
+      @media (max-width: 480px) {
+        .member {
+          width: 230px;
+          height: 450px;
+        }
+        
+        .member img {
+          width: 120px;
+          height: 120px;
+        }
+        
+        .member h3 {
+          font-size: 1.1rem;
+        }
+        
+        .member p {
+          font-size: 0.85rem;
+        }
+      }
+     .logo-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+      .logo-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        background-color: rgb(53, 53, 93);
+        padding: 8px;
+        border-radius: 10px;
+      }
+
+      .logo-container img {
+        height: 90px;
+        width: auto;
+        display: block;
+      }
+  </style>  
+</head>
+<body>
+
+<div class="logo-container">
+  <img src="logo.png" alt="VidScribe Logo">
+</div>
+
+  <header>
+    <h1>About Us</h1>
+  </header>
+
+  <div class="sidebar-toggle" id="toggleBtn">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="editor.html">
+      <i class="fas fa-edit"></i> Video Editor
+    </a>
+    <a href="about.html">
+      <i class="fas fa-info-circle"></i> About Us
+    </a>
+  </div>
+
+  <div class="team-container">
+    
+        <div class="member">
+      <img src="../static/images/devv.jpg" alt="Omar Ahmed">
+      <h3>Omar Ahmed</h3>
+      <p>AI Engineer</p>
+      <p>AI Department - Section 3</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/itz.omar.devil?igsh=bGx6cG9peTZkMHYx" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+        <div class="member">
+      <img src="../static/images/mahmoud hussien.jpg" alt="Mahmoud Hussein">
+      <h3>Mahmoud Hussein</h3>
+      <p>Jocker</p>
+      <p>AI Department - Section 4</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mahmoudhussein_77/" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+        <div class="member">
+      <img src="../static/images/labeeb.jpg" alt="Mahmoud Labeeb">
+      <h3>Mahmoud Labeeb</h3>
+      <p>Statistician</p>
+      <p>AI Department - Section 4</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mahmoudlabeeb_?igsh=YnloamUzNGFhYTBs" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+        <div class="member">
+      <img src="../static/images/ammar.jpg" alt="Ammar Hamed">
+      <h3>Ammar Hamed</h3>
+      <p>Graphic Designer</p>
+      <p>AI Department - Section 3</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/3mar__hamed?igsh=MXd5MG85YjQ3ZXNwag==" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+        <div class="member">
+      <img src="../static/images/adel.png" alt="adel">
+      <h3>Adel Mahfoz</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 2</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/__dolaa__?utm_source=ig_web_button_share_sheet&igsh=Z2hzbmw4eTd6cGNm" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="member">
+      <img src="../static/images/boda.jpg" alt="boda">
+      <h3>Abdelrahman Ahmed</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 3</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/_b_o_d_a_11/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="member">
+      <img src="../static/images/mostafa.png" alt="mostafa">
+      <h3>Mostafa Amr</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 5</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mos6afa_3mr?utm_source=ig_web_button_share_sheet&igsh=b2M5c2F5NjE2MWw3" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="member">
+      <img src="../static/images/saeed.png" alt="saeed amr">
+      <h3>Saeed Amr</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 2</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/saeed_amr77?utm_source=ig_web_button_share_sheet&igsh=eWdrOXptdTJ4NWM1" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+        <div class="member">
+      <img src="../static/images/girl.png" alt="mariam">
+
+      <h3>mariam sayed</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 4</p>
+      <div class="social-links">
+        </a>
+      </div>
+    </div>
+    <div class="member">
+      <img src="../static/images/girl.png" alt="rawan">
+      <h3>rawan khaled</h3>
+      <p>Fashion Designer & Hooper</p>
+      <p>AI Department - Section 2</p>
+      <div class="social-links">
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
