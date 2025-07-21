@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added option to run tts.py from main.py using subprocess">
-      <change afterPath="$PROJECT_DIR$/src/test/templates/editor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/templates/text gen.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/video/output/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/downloaded_videos/downloaded_links.txt" beforeDir="false" afterPath="$PROJECT_DIR$/video/downloaded_videos/downloaded_links.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/scripts/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/testestest.py" afterDir="false" />
-    </list>
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="the project is running for now" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -272,8 +262,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-PY-251.26094.141" />
-        <option value="bundled-python-sdk-9f8e2b94138c-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26094.141" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -345,6 +335,7 @@
       <workItem from="1749980054095" duration="1596000" />
       <workItem from="1752114730145" duration="34000" />
       <workItem from="1753109964826" duration="327000" />
+      <workItem from="1753110479043" duration="291000" />
     </task>
     <task id="LOCAL-00001" summary="feat : creates script">
       <option name="closed" value="true" />
@@ -514,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745782608763</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="the project is running for now">
+      <option name="closed" value="true" />
+      <created>1753110689800</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1753110689800</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,7 +556,8 @@
     <MESSAGE value="feat : replaced evenaps voice over with tts model" />
     <MESSAGE value="feat : added option to choose language and speaker in text-to-speech model" />
     <MESSAGE value="feat : added option to run tts.py from main.py using subprocess" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : added option to run tts.py from main.py using subprocess" />
+    <MESSAGE value="the project is running for now" />
+    <option name="LAST_COMMIT_MESSAGE" value="the project is running for now" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VidScribe0_1$testestest.coverage" NAME="testestest Coverage Results" MODIFIED="1749808101610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
