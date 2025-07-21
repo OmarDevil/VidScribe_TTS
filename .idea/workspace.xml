@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added option to choose language and speaker in text-to-speech model">
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    <list default="true" id="39e6dc42-cac3-4c60-812f-1a51a6befa72" name="Changes" comment="feat : added option to run tts.py from main.py using subprocess">
+      <change afterPath="$PROJECT_DIR$/src/test/templates/editor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/templates/text gen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/output/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VidScribe0.1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/downloaded_videos/downloaded_links.txt" beforeDir="false" afterPath="$PROJECT_DIR$/video/downloaded_videos/downloaded_links.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/scripts/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/testestest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -58,13 +67,24 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.GUI.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.about us.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.aboutus.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.editor.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.test.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.text gen.html.executor&quot;: &quot;Run&quot;,
     &quot;Python.KeyWords.executor&quot;: &quot;Run&quot;,
     &quot;Python.downloadtool.executor&quot;: &quot;Run&quot;,
     &quot;Python.key words.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.sciprttool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server_updated.executor&quot;: &quot;Debug&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;Python.test_tts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testestest.executor&quot;: &quot;Run&quot;,
     &quot;Python.tts.executor&quot;: &quot;Run&quot;,
     &quot;Python.voice over.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -83,11 +103,25 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\test\templates" />
+      <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\src\test\static\images" />
       <recent name="C:\Users\omar\PycharmProjects\VidScribe0.1\axl" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.downloadtool">
-    <configuration name="downloadtool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.server">
+    <configuration name="editor.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/VidScribe0.1/src/test/templates/editor.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="editor.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/VidScribe0.1/src/test/templates/editor.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/VidScribe0.1/src/test/templates/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/VidScribe0.1/src/test/templates/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,12 +130,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/downloadtool.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test/server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,7 +144,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VidScribe0.1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testestest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,7 +181,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/testestest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,7 +190,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="testestest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VidScribe0.1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,7 +204,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/testestest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -193,7 +250,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\omar\PycharmProjects\VidScribe0.1\src\tts.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/tts.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,18 +261,19 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.server" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Python.testestest" />
         <item itemvalue="Python.tts" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.downloadtool" />
+        <item itemvalue="JavaScript Debug.editor.html" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
-        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-PY-251.26094.141" />
+        <option value="bundled-python-sdk-9f8e2b94138c-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26094.141" />
       </set>
     </attachedChunks>
   </component>
@@ -231,6 +289,62 @@
       <workItem from="1744751729276" duration="1043000" />
       <workItem from="1744819339860" duration="3779000" />
       <workItem from="1744823717445" duration="7012000" />
+      <workItem from="1745780892515" duration="3156000" />
+      <workItem from="1745798463639" duration="182000" />
+      <workItem from="1746010674993" duration="33000" />
+      <workItem from="1746015479420" duration="4990000" />
+      <workItem from="1746025807442" duration="12000" />
+      <workItem from="1746110115645" duration="822000" />
+      <workItem from="1746116981316" duration="29000" />
+      <workItem from="1746194900714" duration="186000" />
+      <workItem from="1746195317802" duration="7000" />
+      <workItem from="1746396002960" duration="941000" />
+      <workItem from="1746398165470" duration="2510000" />
+      <workItem from="1746455880452" duration="1318000" />
+      <workItem from="1746457801340" duration="2552000" />
+      <workItem from="1746460392136" duration="32000" />
+      <workItem from="1746474352594" duration="5960000" />
+      <workItem from="1746480422966" duration="327000" />
+      <workItem from="1746480955939" duration="436000" />
+      <workItem from="1746484201492" duration="1530000" />
+      <workItem from="1746523569568" duration="980000" />
+      <workItem from="1746551993060" duration="1397000" />
+      <workItem from="1746729373488" duration="498000" />
+      <workItem from="1747082042505" duration="65000" />
+      <workItem from="1747498809474" duration="38000" />
+      <workItem from="1747604172170" duration="720000" />
+      <workItem from="1747605258890" duration="613000" />
+      <workItem from="1748957721374" duration="298000" />
+      <workItem from="1749006557244" duration="2810000" />
+      <workItem from="1749085165626" duration="8592000" />
+      <workItem from="1749100819431" duration="1491000" />
+      <workItem from="1749105709904" duration="239000" />
+      <workItem from="1749299669269" duration="2493000" />
+      <workItem from="1749487137687" duration="111000" />
+      <workItem from="1749487414915" duration="214000" />
+      <workItem from="1749489677309" duration="1575000" />
+      <workItem from="1749492419548" duration="1197000" />
+      <workItem from="1749680035422" duration="350000" />
+      <workItem from="1749680470821" duration="716000" />
+      <workItem from="1749765107175" duration="97000" />
+      <workItem from="1749765721364" duration="470000" />
+      <workItem from="1749771375474" duration="4074000" />
+      <workItem from="1749788154741" duration="151000" />
+      <workItem from="1749797101650" duration="10206000" />
+      <workItem from="1749812118335" duration="1095000" />
+      <workItem from="1749822632376" duration="3814000" />
+      <workItem from="1749932574043" duration="1183000" />
+      <workItem from="1749934955139" duration="1535000" />
+      <workItem from="1749937067963" duration="87000" />
+      <workItem from="1749947237144" duration="2270000" />
+      <workItem from="1749950599529" duration="1440000" />
+      <workItem from="1749954322302" duration="620000" />
+      <workItem from="1749970419682" duration="531000" />
+      <workItem from="1749971797250" duration="648000" />
+      <workItem from="1749975686750" duration="678000" />
+      <workItem from="1749980054095" duration="1596000" />
+      <workItem from="1752114730145" duration="34000" />
+      <workItem from="1753109964826" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="feat : creates script">
       <option name="closed" value="true" />
@@ -392,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744831148157</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat : added option to run tts.py from main.py using subprocess">
+      <option name="closed" value="true" />
+      <created>1745782608763</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1745782608763</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,11 +556,16 @@
     <MESSAGE value="feat : added new api key to download videos from pexels if no results found in youtube&#10;feat : skip live video&#10;feat : skip videos longer 1 min" />
     <MESSAGE value="feat : replaced evenaps voice over with tts model" />
     <MESSAGE value="feat : added option to choose language and speaker in text-to-speech model" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : added option to choose language and speaker in text-to-speech model" />
+    <MESSAGE value="feat : added option to run tts.py from main.py using subprocess" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : added option to run tts.py from main.py using subprocess" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VidScribe0_1$test.coverage" NAME="test Coverage Results" MODIFIED="1744752649504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$testestest.coverage" NAME="testestest Coverage Results" MODIFIED="1749808101610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$test.coverage" NAME="test Coverage Results" MODIFIED="1745782086070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$server.coverage" NAME="server Coverage Results" MODIFIED="1749980139288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$server_updated.coverage" NAME="server_updated Coverage Results" MODIFIED="1748957790463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
     <SUITE FILE_PATH="coverage/VidScribe0_1$test_tts.coverage" NAME="test_tts Coverage Results" MODIFIED="1744830454010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/VidScribe0_1$tts.coverage" NAME="tts Coverage Results" MODIFIED="1744826633080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$tts.coverage" NAME="tts Coverage Results" MODIFIED="1749802074372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/VidScribe0_1$main.coverage" NAME="main Coverage Results" MODIFIED="1745781902425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

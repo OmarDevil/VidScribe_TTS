@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidScribe</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 20px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #008dca 0%, #00aaff 100%);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.3s;
+    }
+
+    .sidebar-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .bar {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      margin: 5px 0;
+      border-radius: 3px;
+      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    .sidebar-toggle.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .sidebar-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .sidebar-toggle.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: linear-gradient(180deg, #1e1e2e 0%, #1a1a2e 100%);
+      transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+      padding-top: 80px;
+      z-index: 1000;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: all 0.3s;
+      font-size: 1rem;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(0, 170, 255, 0.1);
+      color: #00aaff;
+      border-left: 4px solid #00aaff;
+      padding-left: 30px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #1e1e1e;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #252525;
+      color: #f0f0f0;
+      resize: vertical;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"] {
+      margin-bottom: 15px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #252525;
+      color: #f0f0f0;
+      margin-top: 20px;
+      font-size: 1rem;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0f0f0'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #generateBtn {
+      background: linear-gradient(90deg, #4CAF50 0%, #2E7D32 100%);
+    }
+
+    #speakBtn {
+      background: linear-gradient(90deg, #00aaff 0%, #008dca 100%);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    audio {
+      margin-top: 25px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: #252525;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 15px;
+      font-style: italic;
+      color: #00aaff;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    .script-output {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #252525;
+      border-radius: 10px;
+      border: 1px solid #333;
+      white-space: pre-wrap;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    #loading {
+      animation: pulse 1.5s infinite;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+        padding: 8px 20px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-toggle" id="toggleBtn">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="editor.html">
+      <i class="fas fa-edit"></i> Video Editor
+    </a>
+    <a href="aboutus.html">
+      <i class="fas fa-info-circle"></i> About Us
+    </a>
+  </div>
+
+  <header>
+    <h1>VidScribe</h1>
+  </header>
+
+  <div class="container">
+    <form id="scriptForm" method="POST" action="/generate_script">
+      <div class="input-group">
+        <input type="text" id="topicInput" name="topic" placeholder="Enter your video topic..." required>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" id="generateBtn">Generate Script</button>
+        <button type="button" id="speakBtn" disabled>Convert to Speech</button>
+      </div>
+    </form>
+
+    <div id="scriptOutput" class="script-output" style="display: none;">
+      <h3>Generated Script:</h3>
+      <pre id="scriptContent"></pre>
+    </div>
+
+    <select id="language" style="display: none;">
+      <option value="en">English</option>
+      <option value="ar">Arabic</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+      <option value="de">German</option>
+      <option value="it">Italian</option>
+      <option value="pt">Portuguese</option>
+      <option value="zh-cn">Chinese</option>
+      <option value="ko">Korean</option>
+      <option value="ja">Japanese</option>
+      <option value="hi">Hindi</option>
+      <option value="pl">Polish</option>
+      <option value="tr">Turkish</option>
+      <option value="ru">Russian</option>
+      <option value="nl">Dutch</option>
+      <option value="cs">Czech</option>
+      <option value="hu">Hungarian</option>
+    </select>
+
+    <select id="speaker" style="display: none;">
+      <option>Claribel Dervla</option>
+      <option>Daisy Studious</option>
+      <option>Tammie Ema</option>
+      <option>Gracie Wise</option>
+      <option>Alison Dietlinde</option>
+      <option>Ana Florence</option>
+      <option>Annmarie Nele</option>
+      <option>Asya Anara</option>
+      <option>Brenda Stern</option>
+      <option>Gitta Nikolina</option>
+      <option>Henriette Usha</option>
+      <option>Sofia Hellen</option>
+      <option>Tammy Grit</option>
+      <option>Tanja Adelina</option>
+      <option>Vjollca Johnnie</option>
+      <option>Andrew Chipper</option>
+      <option>Badr Odhiambo</option>
+      <option>Dionisio Schuyler</option>
+      <option>Royston Min</option>
+      <option>Viktor Eka</option>
+      <option>Abrahan Mack</option>
+      <option>Adde Michal</option>
+      <option>Baldur Sanjin</option>
+      <option>Craig Gutsy</option>
+      <option>Damien Black</option>
+      <option>Gilberto Mathias</option>
+      <option>Ilkin Urbano</option>
+      <option>Kazuhiko Atallah</option>
+      <option>Ludvig Milivoj</option>
+      <option>Suad Qasim</option>
+      <option>Torcull Diarmuid</option>
+      <option>Viktor Menelaos</option>
+      <option>Zacharie Aimilios</option>
+      <option>Nova Hogarth</option>
+      <option>Maja Ruoho</option>
+      <option>Uta Obando</option>
+      <option>Lidiya Szekeres</option>
+      <option>Chandra MacFarland</option>
+      <option>Szofi Granger</option>
+      <option>CamillaHolmström</option>
+      <option>Lilya Stainthorpe</option>
+      <option>Zofija Kendrick</option>
+      <option>Narelle Moon</option>
+      <option>Barbora MacLean</option>
+      <option>Alexandra Hisakawa</option>
+      <option>Alma María</option>
+      <option>Rosemary Okafor</option>
+      <option>Ige Behringer</option>
+      <option>Filip Traverse</option>
+      <option>Damjan Chapman</option>
+      <option>Wulf Carlevaro</option>
+      <option>Aaron Dreschner</option>
+      <option>Kumar Dahl</option>
+      <option>Eugenio Mataracı</option>
+      <option>Ferran Simen</option>
+      <option>Xavier Hayasaka</option>
+      <option>Luis Moray</option>
+      <option>Marcos Rudaski</option>
+    </select>
+
+    <div id="loading">Generating audio, please wait...</div>
+
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const scriptForm = document.getElementById('scriptForm');
+    const generateBtn = document.getElementById('generateBtn');
+    const speakBtn = document.getElementById('speakBtn');
+    const loading = document.getElementById('loading');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const scriptOutput = document.getElementById('scriptOutput');
+    const scriptContent = document.getElementById('scriptContent');
+    const languageSelect = document.getElementById('language');
+    const speakerSelect = document.getElementById('speaker');
+
+    // Toggle sidebar
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+
+    // Handle script generation form submission
+    scriptForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(scriptForm);
+      const topic = formData.get('topic');
+
+      if (!topic) {
+        alert("Please enter a topic.");
+        return;
+      }
+
+      generateBtn.disabled = true;
+      generateBtn.textContent = "Generating...";
+
+      try {
+        const response = await fetch("/generate_script", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error("Error generating script");
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const script = doc.querySelector('pre')?.textContent;
+
+        if (script) {
+          scriptContent.textContent = script;
+          scriptOutput.style.display = "block";
+          languageSelect.style.display = "block";
+          speakerSelect.style.display = "block";
+          speakBtn.disabled = false;
+        } else {
+          throw new Error("No script generated");
+        }
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        generateBtn.disabled = false;
+        generateBtn.textContent = "Generate Script";
+      }
+    });
+
+    // Handle text-to-speech conversion
+    speakBtn.addEventListener('click', async () => {
+      const text = scriptContent.textContent;
+      const language = languageSelect.value;
+      const speaker = speakerSelect.value;
+
+      if (!text || !language || !speaker) {
+        alert("Please generate a script first and select language/speaker.");
+        return;
+      }
+
+      loading.style.display = "block";
+      audioPlayer.style.display = "none";
+      speakBtn.disabled = true;
+      speakBtn.textContent = "Processing...";
+
+      try {
+        const response = await fetch("/api/tts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text, language, speaker })
+        });
+
+        if (!response.ok) {
+          throw new Error("Error generating audio");
+        }
+
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        audioPlayer.src = audioUrl;
+        audioPlayer.style.display = "block";
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        loading.style.display = "none";
+        speakBtn.disabled = false;
+        speakBtn.textContent = "Convert to Speech";
+      }
+    });
+  </script>
+</body>
+</html>
